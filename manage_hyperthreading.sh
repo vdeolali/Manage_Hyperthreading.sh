@@ -19,8 +19,9 @@
 # limitations under the License.
 
 function main() {
+	parseOpts
 	if [ "`whoami`" != "root" ]; then
-		echo "You must run this script as root, or with \"sudo $0\""
+		echo "You must run $progname as root, or with \"sudo $progname\""
 		exit 1
 	fi
 	
@@ -91,6 +92,11 @@ function usage(){
 	echo "	-e | --enable		Enable Hyper-Threaded vCPUs"
 	echo "	-s | --show		Show Hyper-Threading status"
 	echo "	-h | --help		Display this usage output"
+}
+
+function parseOpts(){
+	progname=${0##*/}
+#	printf $progname
 }
 
 main $@
